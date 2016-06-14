@@ -24,8 +24,9 @@ DistDiv<-function(dist1,dist2,nbin=100) {
   ##this minimum count is equal to half of the overlap between the distributions in that bin
   counts$overlap<-apply(counts[,1:2],1,min)  #Take the minimum count for each bin
   
-  #multiple the overlap by two to equal the percent overlap between the two distributions
-  #then divide by the total number of observations to get the proportion overlap between the two distributions
+  #multiply the overlap by two to equal the percent overlap of the two distributions
+  #then divide by the total number of observations, and subtract from one
+  #Returns the proportion overlap between the two distributions
   return(1-(2*sum(counts$overlap))/sum(counts$Dist1Counts,counts$Dist2Counts))
   
 }
